@@ -1,25 +1,18 @@
 #include "ParticleVec2.h"
 
 ParticleVec2::ParticleVec2(){
-    position.set(ofGetWidth()/2.0, ofGetHeight()/2.0);
-    velocity.set(0, 0);
-    acceleration.set(0, 0);
-    mass = 1.0;
+    // 初期設定
     radius = 5.0;
-    friction = 0.01;
+    position = ofVec2f(ofGetWidth()/2.0, ofGetHeight()/2.0);
+    velocity = ofVec2f(0, 0);
 }
 
 void ParticleVec2::update(){
-    acceleration -= velocity * friction;
-    velocity += acceleration;
-    position += velocity;
-    acceleration.set(0, 0);
+    velocity += acceleration; // 加速度から速度を算出
+    position += velocity; // 速度から位置を変更
+    acceleration.set(0, 0); // 加速度をリセット
 }
 
 void ParticleVec2::draw(){
-    ofDrawCircle(position.x, position.y, radius);
-}
-
-void ParticleVec2::addForce(ofVec2f force){
-    acceleration += force / mass;
+    ofDrawCircle(position.x, position.y, radius); // 円を描画
 }

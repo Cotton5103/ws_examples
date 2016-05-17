@@ -2,17 +2,14 @@
 #include "ofMain.h"
 
 class ParticleVec2 {
+    
 public:
-    ParticleVec2();
+    ParticleVec2(); //コンストラクタ
     void update();
     void draw();
-    void addForce(ofVec2f force);
-    void bounceOffWalls();
     
-    ofVec2f velocity;
-    ofVec2f acceleration;
-    ofVec2f position;
-    float mass;
-    float radius;
-    float friction;
+    ofVec2f position; //位置
+    ofVec2f velocity; // 速度
+    ofVec2f acceleration; // 加速度
+    float radius; // 表示する円の半径
 };
